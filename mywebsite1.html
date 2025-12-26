@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheGridGrx | Premium Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #000000;
+            --accent: #ffff00;
+            --glass-white: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 234, 0, 0.3);
+            --text-main: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            /* FALLBACK: A dark gradient in case the image path is broken */
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                              url("minewebsite copy.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px 0 35px; /* Less padding on right for the notch */
+            z-index: 9999;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            transition: var(--transition);
+        }
+
+        /* The Scroll-Hide Effect */
+        .nav-hidden {
+            top: -100px;
+            opacity: 0;
+        }
+
+        .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -1px; }
+        .logo span { color: var(--accent); }
+
+        /* THE GLASS NOTCH (Right Side) */
+        .nav-notch {
+            background: var(--glass-white);
+            backdrop-filter: blur(10px);
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-notch a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-notch a:hover { color: var(--accent); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero span {
+            background: linear-gradient(to bottom, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 3. High-End Interactive Button with Glow */
+.btn {
+    display: inline-block; 
+    padding: 20px 45px;
+    background: #ffffff;
+    color: #000;
+    border-radius: 900px;
+    font-weight: 700;
+    font-size: 18px;
+    text-decoration: none;
+    transition: var(--transition);
+    opacity: 13;
+    animation: fadeUp 1s forwards 0.6s;
+    
+    /* THE GLOW EFFECT */
+    /* This creates a soft white glow even when not hovering */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background: var(--accent); /* Changes to yellow on hover */
+    
+    /* INTENSE YELLOW GLOW ON HOVER */
+    /* This uses your brand yellow (--accent) to create the glow */
+    box-shadow: 0 0 30px rgb(110, 109, 158), 
+                0 0 60px rgb(136, 131, 190);
+    
+    color: #000;
+}
+
+        .btn:hover { background: var(--accent); transform: scale(1.05); }
+
+        /* --- SERVICES & REVEAL --- */
+        .services { padding: 100px 10%; background: #000; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 234, 0, 0.1);
+            padding: 40px;
+            border-radius: 30px;
+            transition: 0.5s;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- FOOTER CARD --- */
+        footer { padding: 100px 20px; }
+        .contact-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(20, 20, 20, 0.9);
+            padding: 60px 40px;
+            border-radius: 40px;
+            border: 1px solid var(--accent);
+            text-align: center;
+        }
+
+        .contact-card h2 { font-size: 2rem; margin-bottom: 20px; }
+        .contact-card p { color: var(--accent); font-weight: 700; font-size: 1.3rem; }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <div class="logo">TheGrid<span>Grx</span></div>
+    <div class="nav-notch">
+        <a href="#services">Specialties</a>
+        <a href="#contact">Connect</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Elegant Design.<br><span>Your project deserves it.</span></h1>
+    <a href="#contact" class="btn">Start a Project</a>
+</section>
+<section class="services" id="services">
+    <div class="grid">
+        <div class="card reveal" onclick="openGallery('business-cards')" style="cursor: pointer;">
+            <h3>Business card designer</h3>
+            <p>Helping you make a great first impression. I design professional business cards.</p>
+        </div>
+        
+        <div class="card reveal" onclick="openGallery('menus')" style="cursor: pointer;">
+            <h3>Menu Designer</h3>
+            <p>Expert Menu Design | Bringing your culinary vision to the page.</p>
+        </div>
+
+        <div class="card reveal" onclick="openGallery('photo-editing')" style="cursor: pointer;">
+            <h3>Photo Editing</h3>
+            <p>Professional photo editing: Bringing your images to perfection.</p>
+        </div>
+
+        <div class="card reveal" onclick="openGallery('digital-menus')" style="cursor: pointer;">
+            <h3>QR-Menu Degital Designer</h3>
+            <p>Fast, contactless, and professional: I design digital QR menus for your restaurant.</p>
+        </div>
+    </div>
+
+</section>
+<div id="galleryModal" class="modal">
+    <span class="close-btn" onclick="closeGallery()">&times;</span>
+    <div class="modal-content">
+        <h2 id="galleryTitle">Gallery</h2>
+        <div id="imageGrid" class="image-grid">
+            </div>
+    </div>
+</div>
+
+<footer id="contact">
+    <div class="contact-card reveal">
+        <h2>Ready to transform?</h2>
+        <p>thegridgrx@gmail.com</p>
+        <p>+34 672 197 472</p>
+    </div>
+</footer>
+<div id="galleryModal" class="modal">
+ 
+   </div>
+</div>
+
+<script>
+    
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        // 1. Reveal Animation
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                el.classList.add('active');
+            }
+        });
+
+        // 2. Hide/Show Navbar
+        let currentScroll = window.scrollY;
+        if (currentScroll > lastScroll && currentScroll > 150) {
+            navbar.classList.add('nav-hidden');
+        } else {
+            navbar.classList.remove('nav-hidden');
+        }
+        lastScroll = currentScroll;
+    });
+    // This object stores your images for each category
+const projectImages = {
+    'business-cards': ['/Users/bilalcharghi/Desktop/My designs/business-card.en-us.png', '/Users/bilalcharghi/Desktop/My designs/ejemtar6.png', '/Users/bilalcharghi/Desktop/My designs/EJ5.png','/Users/bilalcharghi/Desktop/My designs/1.png'],
+    'menus': ['/Users/bilalcharghi/Desktop/My designs/Screenshot 2025-10-18 at 19.22.51.png', '/Users/bilalcharghi/Desktop/My designs/Screenshot 2025-10-18 at 19.23.14.png', '/Users/bilalcharghi/Desktop/My designs/mainpage.png', '/Users/bilalcharghi/Desktop/My designs/ejemplo3.png', '/Users/bilalcharghi/Desktop/My designs/ejemplo4.png',],
+    'photo-editing': ['/Users/bilalcharghi/Downloads/IMG_1576.JPG', '/Users/bilalcharghi/Downloads/IMG_1581.png'],
+};
+
+function openGallery(category) {
+    const modal = document.getElementById("galleryModal");
+    const imageGrid = document.getElementById("imageGrid");
+    const title = document.getElementById("galleryTitle");
+
+    // Set Title
+    title.innerText = category.replace('-', ' ').toUpperCase();
+
+    // Clear old images
+    imageGrid.innerHTML = "";
+
+    // Load new images
+    projectImages[category].forEach(src => {
+        const img = document.createElement("img");
+        img.src = src; // These should be the paths to your photos
+        imageGrid.appendChild(img);
+    });
+
+    modal.style.display = "block";
+}
+
+function closeGallery() {
+    document.getElementById("galleryModal").style.display = "none";
+}
+
+// Close modal if user clicks outside the content
+window.onclick = function(event) {
+    const modal = document.getElementById("galleryModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+<style>/* Container for the images */
+.image-grid {
+    display: grid;
+    /* This creates a 3-column layout that becomes 1 column on mobile */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* Professional Image Styling */
+.image-grid img {
+    width: 100%;
+    height: 250px; /* Fixed height for uniformity */
+    object-fit: cover; /* Crops image to fill the box without stretching */
+    border-radius: 20px;
+    border: 1px solid var(--border-glass);
+    transition: var(--transition);
+    cursor: zoom-in;
+}
+
+/* Hover Effect: The "Apple Lift" */
+.image-grid img:hover {
+    transform: scale(1.03) translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    width: 100%;
+    height: 350px; 
+    object-fit: contain; /* The whole image stays visible */
+    background-color: #00000000; /* Adds a clean background to empty spaces */
+    border-radius: 20px;
+    padding: 10px; /* Optional: adds a little breathing room */
+
+}</style>
+</body>
+</html>
